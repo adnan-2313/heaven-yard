@@ -14,7 +14,6 @@ import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
-      <Header />
       <main className="pt-28 sm:pt-36 max-w-8xl mx-auto text-center">
         <h1 className=" gradient-title1 text-4xl sm:text-6xl font-extrabold px-8 max-sm:px-2">
           India's Top Rated Professional Services Platform
@@ -45,10 +44,15 @@ const Home = () => {
             <h2 className="gradient gradient-title text-4xl sm:text-5xl font-extrabold px-8 max-sm:px-2">
               Our Customers
             </h2>
-            <Marquee>
+            <Marquee className="z-10">
               {crausoul.map((items, index) => {
                 return (
-                  <img key={index} src={items} alt="" className="w-36 mx-8" />
+                  <img
+                    key={index}
+                    src={items}
+                    alt=""
+                    className="w-36 mx-8 -z-10"
+                  />
                 );
               })}
             </Marquee>
@@ -85,7 +89,9 @@ const Home = () => {
           </div>
         </div>
         <div className="flex flex-col  justify-center  mt-20 px-8 md:px-24 gap-4">
-          <h1 className="gradient-title1  text-3xl md:text-5xl ">Our Free Product Suite Trial</h1>
+          <h1 className="gradient-title1  text-3xl md:text-5xl ">
+            Our Free Product Suite Trial
+          </h1>
           <p className="text-blue-700 text-xl mb-10">
             Increase efficiency and productivity with our scalable solutions
           </p>
@@ -95,7 +101,7 @@ const Home = () => {
             })}
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </main>
     </>
   );
