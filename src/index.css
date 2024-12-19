@@ -11,5 +11,8 @@
   .gradient1 {
     @apply bg-gradient-to-br from-yellow-400 via-gray-200 to-yellow-400;
   }
+  .gradient-title1 {
+    @apply font-extrabold bg-gradient-to-br from-blue-500 via-blue-100 to-blue-400 bg-clip-text  text-transparent ;
+  }
   
 }

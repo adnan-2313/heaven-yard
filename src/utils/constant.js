@@ -129,59 +129,54 @@ export const operationCards = [
   },
 ];
 
-const productCards = [
+export const productCards = [
   {
     id: 1,
     title: "AI-powered case alerts & research for your legal practice",
-    description: "AI-powered case alerts & research for your legal practice",
+    img: "https://assets.vakilsearch.com/live-images/ic-libra-logo.svg",
     details: [
-      {
-        heading: "Hearings",
-        description:
-          "Get instant court notifications, including case number and room details, with just one click.",
-      },
-      {
-        heading: "Judgements",
-        description:
-          "Access over 5 million judgments quickly by searching keywords, citations, parties, or judges.",
-      },
-      {
-        heading: "Display Board",
-        description:
-          "Stay updated on daily item numbers with our live display board.",
-      },
-      {
-        heading: "Case Alerts",
-        description:
-          "Stay ahead in your legal strategy with real-time case updates from India's largest case directory.",
-      },
+      "Hearings: Get instant court notifications, including case number and room details, with just one click.",
+      "Judgements: Access over 5 million judgments quickly by searching keywords, citations, parties, or judges.",
+      "Display Board: Stay updated on daily item numbers with our live display board.",
+      "Case Alerts: Stay ahead in your legal strategy with real-time case updates from India's largest case directory.",
     ],
   },
   {
     id: 2,
     title: "A complete overview of your business",
-    description: "Unified compliance, legal, and more, all in one place.",
+    img: "https://assets.vakilsearch.com/live-images/ic-zolvit-logo.svg",
     details: [
-      {
-        heading: "Unified Dashboard",
-        description: "Compliance to legal, all in one place.",
-      },
-      {
-        heading: "Expert Access",
-        description:
-          "Expert lawyer + CA + CS in your pocket for all your business needs!",
-      },
-      {
-        heading: "Automatic Compliance Reminder",
-        description: "Stay aligned with regulations with automatic reminders.",
-      },
-      {
-        heading: "Efficient Compliance Tracking",
-        description:
-          "Automated monitoring and reminders for regulatory alignment.",
-      },
+      "Unified Dashboard: Compliance to legal, all in one place.",
+      "Expert Access: Expert lawyer + CA + CS in your pocket for all your business needs!",
+      "Automatic Compliance Reminder: Stay aligned with regulations with automatic reminders.",
+      "Efficient Compliance Tracking: Automated monitoring and reminders for regulatory alignment.",
     ],
   },
 ];
 
-export default productCards;
+
+export const footerItems = [
+  "PF Calculator",
+  "GST Calculator",
+  "PPF Calculator",
+  "SIP Calculator",
+  "TDS Calculator",
+  "HRA Calculator",
+  "Gratuity Calculator",
+  "Business Setup Calculator",
+  "EMI Calculator",
+  "FD Calculator",
+  "Home Loan EMI Calculator",
+  "Income Tax Calculator",
+  "Lumpsum Calculator",
+  "Salary Calculator",
+  "NPS Calculator",
+  "RD Calculator",
+  "Retirement Planning Calculator",
+  "Mutual Fund Returns Calculator",
+  "Simple Compound Interest Calculator",
+  "Pay Commission of India",
+  "Business and Legal Resources",
+];
+
+
