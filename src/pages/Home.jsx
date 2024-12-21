@@ -174,29 +174,35 @@ const Home = () => {
             </Slider>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 ">
           <h3 className="text-black text-3xl font-bold">
             Everything you Need at One Place
           </h3>
           <span className="text-md text-xl">In-House Services</span>
-          <div className="w-full flex justify-center  flex-wrap  my-10   ">
-            {Services.map((item) => {
-              return (
+          <div className="w-full flex justify-center my-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 max-sm:gap-2 gap-4 text-center">
+              {Services.map((item, index) => (
                 <div
-                  className="flex flex-col  justify-between  mx-2 shadow-cardShadow rounded-xl h-[150px] w-[200px] 
+                  className="flex flex-col justify-between items-center shadow-cardShadow rounded-xl h-[150px] max-sm:h-[120px] w-[200px] max-sm:w-[150px] 
                   transition-all hover:scale-105 duration-300 hover:shadow-lg"
-                  key={item.id}
+                  key={index}
                 >
-                  <img src={item.img} className="w-28 mx-auto" />
+                  <img src={item.img} className="w-28 max-sm:w-20" alt={item.title} />
                   <h4 className="text-sm mb-4">{item.title}</h4>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
         <div className="px-4 sm:px-8  flex sm:flex-row flex-col">
-        <h1 className="text-black text-5xl sm:text-[6rem] mb-4 font-extrabold">Why US?</h1>
-          <Accordion type="single" collapsible className="border mb-10 sm:w-4/5 rounded-xl shadow-cardShadow">
+          <h1 className="text-black text-5xl sm:text-[6rem] mb-4 font-extrabold">
+            Why US?
+          </h1>
+          <Accordion
+            type="single"
+            collapsible
+            className="border mb-10 sm:w-4/5 rounded-xl shadow-cardShadow"
+          >
             {whyUsAccordion.map((faq, index) => {
               return (
                 <AccordionItem

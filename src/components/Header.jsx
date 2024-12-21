@@ -2,7 +2,12 @@ import { navItems } from "@/utils/constant";
 import { useState } from "react";
 import logo from "../../public/logo.png";
 
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import {
   ChevronDown,
   ChevronRight,
@@ -36,20 +41,20 @@ const Header = () => {
                 );
               })}
             </ul>
-            <div className="">
+            <div className="flex gap-2 flex-row-reverse">
               <button
                 className={` lg:hidden `}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <MenuIcon />
               </button>
-              <div className="z-10 w-full ">
+              <div className="z-10  flex">
                 <SignedOut>
-
                   <SignInButton>
-                  login
+                    <button className="shadow-cardShadow px-4 py-1 rounded-lg text-white bg-blue-950">
+                      Login
+                    </button>
                   </SignInButton>
-
                 </SignedOut>
                 <SignedIn>
                   <UserButton />
@@ -80,10 +85,8 @@ const Header = () => {
               {item} <ChevronRight />
             </li>
           ))}
-          <li className="text-white flex justify-between"></li>
         </ul>
       </nav>
-      )}
     </>
   );
 };
