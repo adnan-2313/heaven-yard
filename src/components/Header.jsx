@@ -43,9 +43,13 @@ const Header = () => {
               >
                 <MenuIcon />
               </button>
-              <div className="z-10 ">
+              <div className="z-10 w-full ">
                 <SignedOut>
-                  <button className="w-full">Login</button>
+
+                  <SignInButton>
+                  login
+                  </SignInButton>
+
                 </SignedOut>
                 <SignedIn>
                   <UserButton />
