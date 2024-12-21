@@ -1,29 +1,86 @@
 import { navItems } from "@/utils/constant";
 import { useState } from "react";
 import logo from "../../public/logo.png";
-import { Button } from "./ui/button";
-import { ChevronDown, LogIn, LogInIcon, User } from "lucide-react";
+
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  LogIn,
+  LogInIcon,
+  MenuIcon,
+  User,
+  X,
+} from "lucide-react";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full z-50  mx-auto fixed backdrop-blur-xl  justify-center items-center  max-w-[90rem]   text-md  flex ">
-      <nav className=" py-2 flex justify-between items-center w-full px-6">
-        <img src={logo} alt="" className="w-44 mr-36" />
-        <ul className="text-lg   w-full  hidden lg:flex  gap-14 h-8   items-end  mr-16">
-          {navItems.map((item,index) => {
-            return (
-              <li key={index} className="flex items-center   text-black gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer ">
-                {item}{(item === "Projects" || item === "Services") && <ChevronDown/> }
-              </li>
-            );
-          })}
+    <>
+      <div className="flex justify-center w-full">
+        <header className="w-full z-50  mx-auto fixed  backdrop-blur-3xl    justify-center items-center  max-w-[90rem]   text-md  flex ">
+          <nav className=" py-2 flex justify-between items-center w-full px-6 mx-auto">
+            <img src={logo} alt="" className="w-44 mr-36" />
+            <ul className="text-lg   w-full  hidden lg:flex  gap-14 h-8   items-end  mr-16">
+              {navItems.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="flex items-center   text-black gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer "
+                  >
+                    {item}
+                    {(item === "Projects" || item === "Services") && (
+                      <ChevronDown />
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="">
+              <button
+                className={` lg:hidden `}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <MenuIcon />
+              </button>
+              <div className="z-10 border-2">
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </div>
+      /{" "}
+      <nav
+        className={`z-50 left-0 w-full top-0 fixed ${
+          isOpen ? "h-screen" : "h-0"
+        } right-16  shadow-lg md:hidden bg-opacity-50 bg-[#121f38] backdrop-blur-2xl overflow-hidden transition-all duration-500 `}
+      >
+        <div className="flex justify-between px-4 pt-2 border-b border-black">
+          <img src={logo} alt="" className="w-44 mr-36" />
+          <button className="" onClick={() => setIsOpen(false)}>
+            <X />
+          </button>
+        </div>
+        <ul className="flex flex-col gap-4 p-4 ">
+          {navItems.map((item, index) => (
+            <li
+              className="text-white flex justify-between hover:text-blue-900 transition-all text-md border-b-2 py-4 font-medium cursor-pointer"
+              key={index}
+            >
+              {item} <ChevronRight />
+            </li>
+          ))}
+          <li className="text-white flex justify-between"></li>
         </ul>
-        <button className="text-xl border  text-black p-2  border-black rounded-full ">
-          <User />
-        </button>
       </nav>
-    </header>
+      )}
+    </>
   );
 };
 

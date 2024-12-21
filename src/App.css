@@ -1,8 +1,8 @@
 
 
 .dotted-background {
-  background-color: #ffffff;
-  background-image: radial-gradient(#f19d91 1px, transparent 1px);
+  background-color: #050c2b;
+  background-image: radial-gradient(#2e2a29 2px, transparent 1px);
   background-size: 30px 30px;
   /* animation: moveDots 10s linear infinite; */
 }

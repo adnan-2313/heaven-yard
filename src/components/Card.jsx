@@ -2,7 +2,6 @@ import { LocateIcon, Navigation } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Card = ({ data }) => {
-  console.log(data);
   const { title, img, price, desc, address } = data;
 
   return (

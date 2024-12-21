@@ -10,11 +10,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { homeBanner, popularProperties, Services } from "@/utils/constant";
+import {
+  homeBanner,
+  popularProperties,
+  Services,
+  whyUsAccordion,
+} from "@/utils/constant";
 import { State } from "country-state-city";
 import { Search } from "lucide-react";
 import Marquee from "react-fast-marquee";
 import Slider from "react-slick";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 const Home = () => {
   const settings = {
     dots: true,
@@ -135,7 +146,7 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <section className="mt-52 overflow-hidden  px-4  sm:mt-36 flex flex-col justify-center text-center">
+      <section className="mt-52 max-w-[90rem] mx-auto overflow-hidden  px-4  sm:mt-36 flex flex-col justify-center text-center">
         <div className="">
           <h1 className="text-4xl  gradient-title1 w-full sm:leading-[4rem]    font-extrabold text-blue-950 ">
             Our Popular Properties{" "}
@@ -168,22 +179,39 @@ const Home = () => {
             Everything you Need at One Place
           </h3>
           <span className="text-md text-xl">In-House Services</span>
-          <div className="w-full   my-10  px-4 ">
-            <Marquee pauseOnHover="true" className="overflow-y-hidden py-2 ">
-              {Services.map((item) => {
-                return (
-                  <div
-                    className="flex flex-col  justify-between  mx-2 shadow-cardShadow rounded-xl h-[150px] w-[200px] 
+          <div className="w-full flex justify-center  flex-wrap  my-10   ">
+            {Services.map((item) => {
+              return (
+                <div
+                  className="flex flex-col  justify-between  mx-2 shadow-cardShadow rounded-xl h-[150px] w-[200px] 
                   transition-all hover:scale-105 duration-300 hover:shadow-lg"
-                    key={item.id}
-                  >
-                    <img src={item.img} className="w-28 mx-auto" />
-                    <h4 className="text-sm mb-4">{item.title}</h4>
-                  </div>
-                );
-              })}
-            </Marquee>
+                  key={item.id}
+                >
+                  <img src={item.img} className="w-28 mx-auto" />
+                  <h4 className="text-sm mb-4">{item.title}</h4>
+                </div>
+              );
+            })}
           </div>
+        </div>
+        <div className="px-4 sm:px-8  flex sm:flex-row flex-col">
+        <h1 className="text-black text-5xl sm:text-[6rem] mb-4 font-extrabold">Why US?</h1>
+          <Accordion type="single" collapsible className="border mb-10 sm:w-4/5 rounded-xl shadow-cardShadow">
+            {whyUsAccordion.map((faq, index) => {
+              return (
+                <AccordionItem
+                  className=" px-2 my-2 text-black   bg-opacity-20 "
+                  key={index}
+                  value={`item-${index + 1}`}
+                >
+                  <AccordionTrigger className=" ">{faq.title}</AccordionTrigger>
+                  <AccordionContent className=" text-start">
+                    {faq.description}
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         </div>
       </section>
     </>
