@@ -4,8 +4,9 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
   	extend: {
+		
   		boxShadow: {
-  			customShadow: '0px -2px 10px rgba(0,0,0,0.2)'
+  			cardShadow: '0.8px 1.6px 1.6px rgba(0, 0, 0, 0.3)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

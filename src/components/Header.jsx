@@ -13,13 +13,13 @@ const Header = () => {
         <ul className="text-lg   w-full  hidden lg:flex  gap-14 h-8   items-end  mr-16">
           {navItems.map((item,index) => {
             return (
-              <li key={index} className="flex items-center   text-white gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer ">
+              <li key={index} className="flex items-center   text-black gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer ">
                 {item}{(item === "Projects" || item === "Services") && <ChevronDown/> }
               </li>
             );
           })}
         </ul>
-        <button className="text-xl border  text-white p-2  border-white rounded-full ">
+        <button className="text-xl border  text-black p-2  border-black rounded-full ">
           <User />
         </button>
       </nav>

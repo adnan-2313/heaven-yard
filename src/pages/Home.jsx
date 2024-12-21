@@ -1,6 +1,7 @@
 import Card from "@/components/Card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   Select,
   SelectContent,
@@ -11,9 +12,46 @@ import {
 } from "@/components/ui/select";
 import { homeBanner, popularProperties, Services } from "@/utils/constant";
 import { State } from "country-state-city";
-import { Search, SearchCheckIcon } from "lucide-react";
+import { Search } from "lucide-react";
 import Marquee from "react-fast-marquee";
+import Slider from "react-slick";
 const Home = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
   return (
     <>
       <main className="max-w-8xl mx-auto text-center overflow-hidden">
@@ -56,7 +94,7 @@ const Home = () => {
               // }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Filter by Location" />
+                <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup className="backdrop-blur-2xl bg-transparent ">
@@ -76,7 +114,7 @@ const Home = () => {
             // }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Filter by Location" />
+                <SelectValue placeholder="Price" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -91,29 +129,39 @@ const Home = () => {
               </SelectContent>
             </Select>
 
-            <Button
-              className="sm:w-1/2  backdrop-blur-2xl"
-              variant="destructive"
-            >
-              Clear Filters
+            <Button className="sm:w-1/2 bg-blue-900 hover:bg-blue-950 text-white hover:text-white  backdrop-blur-2xl">
+              Clear
             </Button>
           </div>
         </div>
       </main>
-      <section className="mt-36 px-4   sm:mt-36 flex flex-col justify-center text-center">
+      <section className="mt-52 overflow-hidden  px-4  sm:mt-36 flex flex-col justify-center text-center">
         <div className="">
-          <h1 className=" text-7xl w-full leading-[4rem]    gradient-title1  gradient1 font-bold ">
-            Best Choices
-          </h1>
-          <h1 className=" text-4xl w-full leading-[4rem]    font-extrabold text-blue-950 ">
+          <h1 className="text-4xl  gradient-title1 w-full sm:leading-[4rem]    font-extrabold text-blue-950 ">
             Our Popular Properties{" "}
           </h1>
         </div>
-
-        <div className="flex justify-center  flex-wrap gap-3 mt-10">
-          {popularProperties.map((item) => {
-            return <Card key={item.id} data={item} />;
-          })}
+        <div className="w-full mt-10 flex max-sm:flex-col justify-end sm:mt-5 ">
+          <div className="w-[280px] rounded-xl p-4 hidden sm:flex flex-col gap-1 h-[380px] bg-white shadow-cardShadow">
+            <img
+              src="https://www.squareyards.com/assets/images/building-img.svg"
+              alt=""
+              className="w-36"
+            />
+            <h1 className="text-xl text-start font-bold">Our Best Sellers </h1>
+            <p className="text-start text-sm">
+              The latest residential offerings from the best builders,
+              handpicked by our team of experts just for you and backed by our
+              widely acclaimed transaction and financial services.
+            </p>
+          </div>
+          <div className="sm:w-4/6 ">
+            <Slider {...settings}>
+              {popularProperties.map((item) => {
+                return <Card key={item.id} data={item} />;
+              })}
+            </Slider>
+          </div>
         </div>
         <div className="mt-10">
           <h3 className="text-black text-3xl font-bold">
@@ -121,19 +169,19 @@ const Home = () => {
           </h3>
           <span className="text-md text-xl">In-House Services</span>
           <div className="w-full   my-10  px-4 ">
-          <Marquee pauseOnHover="true" className="overflow-y-hidden py-2 ">
-            {Services.map((item) => {
-              return (
-                <div
-                  className="flex flex-col  justify-between  mx-2 shadow-lg rounded-xl h-[150px] w-[200px] 
+            <Marquee pauseOnHover="true" className="overflow-y-hidden py-2 ">
+              {Services.map((item) => {
+                return (
+                  <div
+                    className="flex flex-col  justify-between  mx-2 shadow-cardShadow rounded-xl h-[150px] w-[200px] 
                   transition-all hover:scale-105 duration-300 hover:shadow-lg"
-                  key={item.id}
-                >
-                  <img src={item.img} className="w-28 mx-auto" />
-                  <h4 className="text-sm mb-4">{item.title}</h4>
-                </div>
-              );
-            })}
+                    key={item.id}
+                  >
+                    <img src={item.img} className="w-28 mx-auto" />
+                    <h4 className="text-sm mb-4">{item.title}</h4>
+                  </div>
+                );
+              })}
             </Marquee>
           </div>
         </div>
