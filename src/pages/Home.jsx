@@ -1,108 +1,143 @@
-import { SearchIcon } from "lucide-react";
-import Header from "../components/Header";
+import Card from "@/components/Card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
-  productCards,
-  crausoul,
-  Filters,
-  operationCards,
-  serviceCards,
-} from "../utils/constant";
-import Card from "../components/Card";
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { homeBanner, popularProperties, Services } from "@/utils/constant";
+import { State } from "country-state-city";
+import { Search, SearchCheckIcon } from "lucide-react";
 import Marquee from "react-fast-marquee";
-import LargeCard from "../components/LargeCard";
-import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
-      <main className="pt-28 sm:pt-36 max-w-8xl mx-auto text-center">
-        <h1 className=" gradient-title1 text-4xl sm:text-6xl font-extrabold px-8 max-sm:px-2">
-          India's Top Rated Professional Services Platform
-        </h1>
-        <p className="text-gray-300 text-sm sm:text-2xl mt-2 sm:mt-6 max-md:px-8">
-          Connecting you with experts to simplify your legal, tax & compliance.
-        </p>
-        <div className="flex flex-col w-full px-10 md:px-48">
-          <form className="shadow-lg  mt-4 mb-2 outline-none flex bg-white text-black w-full p-2 md:p-4 rounded-3xl">
-            <input type="text" className="w-full outline-none px-2" />
-            <button className="cursor-pointer">
-              <SearchIcon />
+      <main className="max-w-8xl mx-auto text-center overflow-hidden">
+        <div className="">
+          <img
+            src={homeBanner}
+            alt=""
+            className="-z-10 w-full  mx-auto h-[700px] border-b-2  md:h-[550px] absolute object-cover shadow-gray-400"
+          />
+        </div>
+        <div className=" flex flex-col mt-28 items-center  justify-center  max-w-6xl mx-auto">
+          <div className="flex justify-center flex-col items-center">
+            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl gradient gradient-title font-extrabold    text-white z-10">
+              Discover Your Dream Home
+              <br /> Perfect for You and Your Family{" "}
+            </h1>
+            <p className="sm:text-xl text-sm mt-5 font-medium   text-blue-900 ">
+              Explore a wide range of properties. Find your ideal space with
+              ease and make your home-buying journey seamless.
+            </p>
+          </div>
+
+          <form
+            className="px-4 mt-8 w-4/5   md:w-2/3 text-md md:text-2xl bg-opacity-10 bg-transparent items-center rounded-xl z-20 h-12 md:h-16 shadow-lg flex 
+            justify-center backdrop-blur-3xl   border-white border outline-none "
+          >
+            <input
+              placeholder=""
+              className="w-full text-sm sm:text-md  bg-transparent border-none outline-none"
+            />
+            <button className="">
+              <Search />
             </button>
           </form>
-          <div className="flex flex-wrap mt-2 md:mt-3  justify-center items-center gap-2 md:gap-4">
-            {Filters.map((items, index) => {
-              return (
-                <button
-                  key={index}
-                  className="px-4 shadow-[0px_-2px_10px_rgba(0,0,0,0.2)]  py-2 rounded-3xl text-sm bg-black bg-opacity-50 hover:bg-gray-950"
-                >
-                  {items}
-                </button>
-              );
-            })}
-          </div>
-          <div className="flex flex-col w-full gap-10 justify-center items-center mt-12">
-            <h2 className="gradient gradient-title text-4xl sm:text-5xl font-extrabold px-8 max-sm:px-2">
-              Our Customers
-            </h2>
-            <Marquee className="z-10">
-              {crausoul.map((items, index) => {
-                return (
-                  <img
-                    key={index}
-                    src={items}
-                    alt=""
-                    className="w-36 mx-8 -z-10"
-                  />
-                );
-              })}
-            </Marquee>
+          <div className="flex w-4/5 md:w-2/3 mt-3 flex-col sm:flex-row gap-2 max-sm:px-4 bg-white  bg-opacity-10 backdrop-blur-lg rounded-xl">
+            <Select
+              className="backdrop-blur-2xl border-2 shadow-lg"
+
+              // onValueChange={(value) => setLocation(value)
+              // }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Filter by Location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup className="backdrop-blur-2xl bg-transparent ">
+                  {State.getStatesOfCountry("IN").map(({ name }) => {
+                    return (
+                      <SelectItem key={name} value={name}>
+                        {name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Select
+
+            // onValueChange={(value) => setLocation(value)
+            // }
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Filter by Location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {State.getStatesOfCountry("IN").map(({ name }) => {
+                    return (
+                      <SelectItem key={name} value={name}>
+                        {name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+
+            <Button
+              className="sm:w-1/2  backdrop-blur-2xl"
+              variant="destructive"
+            >
+              Clear Filters
+            </Button>
           </div>
         </div>
-        <div className="flex flex-wrap justify-center  mt-20 w-full px-8 gap-4">
-          {serviceCards.map((item) => {
+      </main>
+      <section className="mt-36 px-4   sm:mt-36 flex flex-col justify-center text-center">
+        <div className="">
+          <h1 className=" text-7xl w-full leading-[4rem]    gradient-title1  gradient1 font-bold ">
+            Best Choices
+          </h1>
+          <h1 className=" text-4xl w-full leading-[4rem]    font-extrabold text-blue-950 ">
+            Our Popular Properties{" "}
+          </h1>
+        </div>
+
+        <div className="flex justify-center  flex-wrap gap-3 mt-10">
+          {popularProperties.map((item) => {
             return <Card key={item.id} data={item} />;
           })}
         </div>
-
-        <div className="flex flex-col justify-center  mt-20 w-full px-8 md:px-24 gap-4">
-          <h1 className="gradient gradient-title text-xl sm:text-4xl font-extrabold">
-            350+ Verified CA, CS, and Legal Experts Ready to Streamline Your
-            Business Operations.
-          </h1>
-          <div className="flex flex-col gap-4 w-full justify-center items-center -z-1">
-            {operationCards.map((items, index) => {
+        <div className="mt-10">
+          <h3 className="text-black text-3xl font-bold">
+            Everything you Need at One Place
+          </h3>
+          <span className="text-md text-xl">In-House Services</span>
+          <div className="w-full   my-10  px-4 ">
+          <Marquee pauseOnHover="true" className="overflow-y-hidden py-2 ">
+            {Services.map((item) => {
               return (
                 <div
-                  key={index}
-                  className={`md:w-1/2 -z-1 text-start max-sm:text-sm  max-sm:text-center transition-all bg-[#151c2b] rounded-xl flex flex-row gap-2 py-8 shadow-[0px_-2px_10px_rgba(0,0,0,0.3)] px-4`}
+                  className="flex flex-col  justify-between  mx-2 shadow-lg rounded-xl h-[150px] w-[200px] 
+                  transition-all hover:scale-105 duration-300 hover:shadow-lg"
+                  key={item.id}
                 >
-                  <img src={items.img} alt="img" className="w-24" />
-                  <div className="">
-                    <h3 className="font-semibold gradient-title gradient">
-                      {items.title}
-                    </h3>
-                    <p className="leading-tight">{items.desc}</p>
-                  </div>
+                  <img src={item.img} className="w-28 mx-auto" />
+                  <h4 className="text-sm mb-4">{item.title}</h4>
                 </div>
               );
             })}
+            </Marquee>
           </div>
         </div>
-        <div className="flex flex-col  justify-center  mt-20 px-8 md:px-24 gap-4">
-          <h1 className="gradient-title1  text-3xl md:text-5xl ">
-            Our Free Product Suite Trial
-          </h1>
-          <p className="text-blue-700 text-xl mb-10">
-            Increase efficiency and productivity with our scalable solutions
-          </p>
-          <div className="flex flex-col md:flex-row gap-4">
-            {productCards.map((items) => {
-              return <LargeCard key={items.key} data={items} />;
-            })}
-          </div>
-        </div>
-        <Footer />
-      </main>
+      </section>
     </>
   );
 };
