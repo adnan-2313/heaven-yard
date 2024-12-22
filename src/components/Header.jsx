@@ -73,7 +73,7 @@ const Header = () => {
       <nav
         className={`z-50 left-0 w-full top-0 fixed ${
           isOpen ? "h-screen" : "h-0"
-        } right-16  shadow-lg md:hidden  bg-white  overflow-hidden transition-all duration-500 `}
+        } right-16  shadow-lg lg:hidden  bg-white  overflow-hidden transition-all duration-500 `}
       >
         <div className="bg-blue-50">
           <div className="flex justify-between px-4 pt-2 border-b border-gray-300 ">
