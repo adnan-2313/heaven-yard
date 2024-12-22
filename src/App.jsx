@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import { RouterProvider } from "react-router";
 import AppLayout from "./layout/AppLayout";
 import AdminDashboard from "./pages/AdminDashboard";
-import Protectedroute from "./components/ProtectedRoute";
+import Protectedroute from "./components/Protectedroute";
 import PropertyListing from "./pages/PropertyListing";
 
 const router = createBrowserRouter([
