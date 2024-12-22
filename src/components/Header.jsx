@@ -11,6 +11,7 @@ import {
 } from "@clerk/clerk-react";
 import { ChevronDown, ChevronRight, MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
@@ -18,15 +19,17 @@ const Header = () => {
   return (
     <>
       <div className="flex justify-center w-full">
-        <header className="w-full fixed z-50 backdrop-blur-3xl mx-auto max-w-full text-md flex items-center">
+        <header className="w-full fixed z-50 backdrop-blur-3xl mx-auto max-w-[90rem] text-md flex items-center">
           <nav className=" w-full flex justify-between items-center px-4 py-2">
-            <img src={logo} alt="" className="w-44 mr-36" />
+            <Link to="/">
+              <img src={logo} alt="" className="w-44 mr-36" />
+            </Link>
             <ul className="text-[1rem]   w-full  hidden lg:flex   lg:gap-8 justify-center  h-8   items-end  mr-16">
               {navItems.map((item, index) => {
                 return (
                   <li
                     key={index}
-                    className="flex items-center   text-black gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer "
+                    className="flex items-center font-semibold  text-[#050c2b] gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer "
                   >
                     {item}
                     {(item === "Projects" || item === "Services") && (
@@ -61,10 +64,10 @@ const Header = () => {
               </div>
               {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
                 <Button
-                  className={`rounded-none px-8 bg-blue-950 backdrop-blur-3xl bg-opacity-30  hover:bg-blue-800 max-lg:hidden mr-3 `}
+                  className={`rounded-none px-8 bg-[#050c2b] hover:bg-[#050c2bce] max-lg:hidden mr-3 `}
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  Admin
+                  <Link to="/admindashboard">Admin</Link>
                 </Button>
               )}
             </div>
@@ -105,10 +108,11 @@ const Header = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-4 p-4 ">
-          <li className="text-black flex justify-center hover:text-blue-900 transition-all text-md border-b py-2 font-medium cursor-pointer">
+          <li className="text-black flex justify-center hover:text-blue-900 transition-all text-md  py-2 font-medium cursor-pointer">
             {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
               <Button
-                className={` bg-blue-950 hover:bg-blue-800  mr-3 `}
+                size="xl"
+                className={` w-full rounded-none bg-[#050c2b] hover:bg-blue-900  mr-3 `}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 Admin Dashboard

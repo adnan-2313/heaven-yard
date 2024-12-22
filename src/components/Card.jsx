@@ -5,7 +5,7 @@ const Card = ({ data }) => {
   const { title, img, price, desc, address } = data;
 
   return (
-    <div className="flex bg-white overflow-hidden mx-1  relative rounded-xl mb-2 h-[380px]  flex-col shadow-cardShadow">
+    <div className="flex bg-white max-sm:w-[250px] overflow-hidden mx-1  relative rounded-xl mb-2 h-[380px]  flex-col shadow-cardShadow">
       <img
         src={img}
         alt="imgs"

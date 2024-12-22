@@ -3,13 +3,7 @@ import { Home, Info, Briefcase, Mail, Settings } from "lucide-react";
 export const homeBanner =
   "https://www.squareyards.com/assets/images/desktop-banner.jpeg?aio=w-1366;h-560;crop;";
 
-export const navItems = [
-  "Home",
-  "About",
-  "Projects",
-  "Contacts",
-  "Services",
-];
+export const navItems = ["Home", "About", "Projects", "Contacts", "Services"];
 
 export const mobileNavItems = [
   { name: "Home", icon: Home },
@@ -18,6 +12,9 @@ export const mobileNavItems = [
   { name: "Contacts", icon: Mail },
   { name: "Services", icon: Settings },
 ];
+export const priceList = ["16000", "10999", "4199", "3399", "4199", "47000"];
+export const state = ["16000", "10999", "4199", "3399", "4199", "47000"];
+
 
 export const popularProperties = [
   {
