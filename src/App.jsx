@@ -1,15 +1,21 @@
-import FooterSection from "./components/Footer";
-import Header from "./components/Header";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
+import { RouterProvider } from "react-router";
+import AppLayout from "./layout/AppLayout";
 
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
 const App = () => {
-  return (
-    <>
-      <Header />
-      <Home />
-      <FooterSection/>
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
