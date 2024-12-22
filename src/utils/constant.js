@@ -1,3 +1,5 @@
+import { Home, Info, Briefcase, Mail, Settings } from "lucide-react";
+
 export const homeBanner =
   "https://www.squareyards.com/assets/images/desktop-banner.jpeg?aio=w-1366;h-560;crop;";
 
@@ -7,6 +9,14 @@ export const navItems = [
   "Projects",
   "Contacts",
   "Services",
+];
+
+export const mobileNavItems = [
+  { name: "Home", icon: Home },
+  { name: "About Us", icon: Info },
+  { name: "Projects", icon: Briefcase },
+  { name: "Contacts", icon: Mail },
+  { name: "Services", icon: Settings },
 ];
 
 export const popularProperties = [
@@ -127,31 +137,34 @@ export const whyUsAccordion = [
   {
     id: 1,
     title: "Prime Locations",
-    description: "At Heaven Year, we focus on properties in prime locations that offer excellent connectivity, proximity to essential amenities, and high potential for appreciation. Whether it's a serene suburb or a bustling city center, we have you covered."
+    description:
+      "At Heaven Year, we focus on properties in prime locations that offer excellent connectivity, proximity to essential amenities, and high potential for appreciation. Whether it's a serene suburb or a bustling city center, we have you covered.",
   },
   {
     id: 2,
     title: "Affordable Luxury",
-    description: "We believe luxury living should be accessible. Our properties are designed to provide world-class amenities, elegant interiors, and spacious layouts without exceeding your budget."
+    description:
+      "We believe luxury living should be accessible. Our properties are designed to provide world-class amenities, elegant interiors, and spacious layouts without exceeding your budget.",
   },
   {
     id: 3,
     title: "Transparent Transactions",
-    description: "Experience hassle-free property purchases with our commitment to transparency. From detailed documentation to clear pricing, we ensure every step of your journey is straightforward and trustworthy."
+    description:
+      "Experience hassle-free property purchases with our commitment to transparency. From detailed documentation to clear pricing, we ensure every step of your journey is straightforward and trustworthy.",
   },
   {
     id: 4,
     title: "End-to-End Support",
-    description: "Our dedicated team is here to guide you through every stage of your real estate journey. From property selection and financing to legal assistance and post-sale support, we ensure a seamless experience."
+    description:
+      "Our dedicated team is here to guide you through every stage of your real estate journey. From property selection and financing to legal assistance and post-sale support, we ensure a seamless experience.",
   },
   {
     id: 5,
     title: "Sustainability and Innovation",
-    description: "Heaven Year is committed to sustainability. Our properties incorporate eco-friendly designs, energy-efficient systems, and smart technology, ensuring a future-ready and environmentally conscious living experience."
-  }
+    description:
+      "Heaven Year is committed to sustainability. Our properties incorporate eco-friendly designs, energy-efficient systems, and smart technology, ensuring a future-ready and environmentally conscious living experience.",
+  },
 ];
-
-
 
 //   export const navItems = [
 //   "Business setup",
