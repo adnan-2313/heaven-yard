@@ -9,26 +9,19 @@ import {
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
-import {
-  ChevronDown,
-  ChevronRight,
-  LogIn,
-  LogInIcon,
-  MenuIcon,
-  User,
-  X,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/button";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
+  console.log(user?.id);
   return (
     <>
       <div className="flex justify-center w-full">
         <header className="w-full fixed z-50 backdrop-blur-3xl mx-auto max-w-full text-md flex items-center">
           <nav className=" w-full flex justify-between items-center px-4 py-2">
             <img src={logo} alt="" className="w-44 mr-36" />
-            <ul className="text-lg   w-full  hidden lg:flex  gap-14 h-8   items-end  mr-16">
+            <ul className="text-[1rem]   w-full  hidden lg:flex   lg:gap-8 justify-center  h-8   items-end  mr-16">
               {navItems.map((item, index) => {
                 return (
                   <li
@@ -50,6 +43,7 @@ const Header = () => {
               >
                 <MenuIcon />
               </button>
+
               <div className="z-10 hidden  lg:flex max-xs:left-48">
                 <SignedOut>
                   <SignInButton>
@@ -65,6 +59,14 @@ const Header = () => {
                   <UserButton />
                 </SignedIn>
               </div>
+              {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
+                <Button
+                  className={`rounded-none px-8 bg-blue-950 backdrop-blur-3xl bg-opacity-30  hover:bg-blue-800 max-lg:hidden mr-3 `}
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Admin
+                </Button>
+              )}
             </div>
           </nav>
         </header>
@@ -84,7 +86,7 @@ const Header = () => {
           </div>
 
           <div className="flex gap-4 p-4 font-semibold text-blue-950">
-            {user ? "Account": "Login in to Your Account"}
+            {user ? "Account" : "Login in to Your Account"}
             <div className="z-10 flex max-xs:left-48">
               <SignedOut>
                 <SignInButton>
@@ -103,6 +105,16 @@ const Header = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-4 p-4 ">
+          <li className="text-black flex justify-center hover:text-blue-900 transition-all text-md border-b py-2 font-medium cursor-pointer">
+            {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
+              <Button
+                className={` bg-blue-950 hover:bg-blue-800  mr-3 `}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                Admin Dashboard
+              </Button>
+            )}
+          </li>
           {mobileNavItems.map((item, index) => (
             <li
               className="text-black flex justify-between hover:text-blue-900 transition-all text-md border-b py-2 font-medium cursor-pointer"
@@ -115,7 +127,6 @@ const Header = () => {
               <ChevronRight />
             </li>
           ))}
-          <li className="flex justify-center"></li>
         </ul>
       </nav>
     </>

@@ -18,7 +18,6 @@ import {
 } from "@/utils/constant";
 import { State } from "country-state-city";
 import { Search } from "lucide-react";
-import Marquee from "react-fast-marquee";
 import Slider from "react-slick";
 import {
   Accordion,
@@ -187,7 +186,11 @@ const Home = () => {
                   transition-all hover:scale-105 duration-300 hover:shadow-lg"
                   key={index}
                 >
-                  <img src={item.img} className="w-28 max-sm:w-20" alt={item.title} />
+                  <img
+                    src={item.img}
+                    className="w-28 max-sm:w-20"
+                    alt={item.title}
+                  />
                   <h4 className="text-sm mb-4">{item.title}</h4>
                 </div>
               ))}

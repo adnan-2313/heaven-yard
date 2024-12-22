@@ -5,7 +5,7 @@ export const homeBanner =
 
 export const navItems = [
   "Home",
-  "About Us",
+  "About",
   "Projects",
   "Contacts",
   "Services",
