@@ -10,7 +10,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -21,14 +20,14 @@ import { useUser } from "@clerk/clerk-react";
 import { Select, SelectTrigger } from "@radix-ui/react-select";
 import { State } from "country-state-city";
 import { useEffect, useState } from "react";
-import { SyncLoader } from "react-spinners";
+import { BarLoader, SyncLoader } from "react-spinners";
 import { getLocation } from "@/api/apiLocation";
 
 const PropertyListing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
-  const { isLoaded } = useUser();
+  const { isLoaded, user } = useUser();
 
   const {
     fn: fnProperty,
@@ -36,10 +35,11 @@ const PropertyListing = () => {
     loading: loadingProperty,
   } = useFetch(getProperty);
 
+  console.log(user?.id);
   const {
     fn: fnLocation,
     data: dataLocation,
-    loading: loadingLocation,
+    loadong: loadingLocation,
   } = useFetch(getLocation);
 
   useEffect(() => {
@@ -47,10 +47,8 @@ const PropertyListing = () => {
   }, []);
 
   useEffect(() => {
-    fnProperty();
+    if (isLoaded) fnProperty();
   }, []);
-
-  console.log(dataLocation);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -66,8 +64,9 @@ const PropertyListing = () => {
     setLocation("");
   };
 
-  console.log(dataProperty);
-  if (!loadingProperty) {
+  console.log(loadingProperty);
+
+  if (!user?.id) {
     return (
       <div className="w-full flex absolute -top-20 bg-white h-[100vh] justify-center items-center">
         <SyncLoader className="m-auto" width={"100%"} color="#36d7b7" />
@@ -136,13 +135,16 @@ const PropertyListing = () => {
           </SelectContent>
         </Select>
         <Button
-          className=" w-full sm:w-1/5"
+          className=" w-full sm:w-1/5 rounded-none"
           variant="destructive"
           onClick={clearFilters}
         >
           Clear Filters
         </Button>
       </div>
+      {loadingProperty || loadingProperty === undefined && (
+        <BarLoader className="mt-4 mx-auto" width={"80%"} color="black" />
+      )}
       {loadingProperty === false && (
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-sm:px-6">
           {dataProperty?.length ? (
@@ -163,10 +165,11 @@ const PropertyListing = () => {
                   <CardContent>
                     <p>{item?.details}</p>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="flex justify-between">
                     <h3 className="text-lg font-semibold">
                       {item?.price} per square fit
                     </h3>
+                    <Button class="secondary bg-blue-950 " size="lg" >Enquiry</Button>
                   </CardFooter>
                 </Card>
               );

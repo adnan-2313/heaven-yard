@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
-  console.log(user?.id);
+
   return (
     <>
       <div className="flex justify-center w-full">
