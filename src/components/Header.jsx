@@ -49,8 +49,7 @@ const Header = () => {
                   >
                     <NavLink className="flex" to={item.link}>
                       {item.label}
-                      {(item.label === "Projects" ||
-                        item.label === "Services") }
+                      {item.label === "Projects" || item.label === "Services"}
                     </NavLink>
                   </li>
                 );
@@ -125,13 +124,15 @@ const Header = () => {
         <ul className="flex flex-col gap-4 p-4 ">
           <li className="text-black flex justify-center hover:text-blue-900 transition-all text-md  py-2 font-medium cursor-pointer">
             {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
-              <Button
-                size="xl"
-                className={` w-full rounded-none bg-[#050c2b] hover:bg-blue-900  mr-3 `}
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                Admin Dashboard
-              </Button>
+              <NavLink to="/admindashboard">
+                <Button
+                  size="xl"
+                  className={` w-full rounded-none bg-[#050c2b] hover:bg-blue-900  mr-3 `}
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Admin Dashboard
+                </Button>
+              </NavLink>
             )}
           </li>
           {mobileNavItems.map((item, index) => (
