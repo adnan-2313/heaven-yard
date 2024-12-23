@@ -124,7 +124,7 @@ const Header = () => {
         <ul className="flex flex-col gap-4 p-4 ">
           <li className="text-black flex justify-center hover:text-blue-900 transition-all text-md  py-2 font-medium cursor-pointer">
             {user?.id === "user_2qXN0OKqqgfTRYLzTKNfLQXu5Yh" && (
-              <NavLink to="/admindashboard">
+              <NavLink to="/admindashboard" className="w-full">
                 <Button
                   size="xl"
                   className={` w-full rounded-none bg-[#050c2b] hover:bg-blue-900  mr-3 `}
