@@ -4,7 +4,7 @@ export const homeBanner =
   "https://www.squareyards.com/assets/images/desktop-banner.jpeg?aio=w-1366;h-560;crop";
 
 export const navItems = [
-  { id: 1, label: "Home", link: "/home" },
+  { id: 1, label: "Home", link: "/" },
   { id: 2, label: "About", link: "/" },
   { id: 3, label: "Projects", link: "/property" },
   { id: 4, label: "Contacts", link: "/" },

@@ -126,7 +126,7 @@ const PropertyListing = () => {
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-sm:px-6">
           {dataProperty?.length ? (
             dataProperty.map((item, index) => (
-              <PropertyCard key={index} item={item} />
+              <PropertyCard key={index} item={item} isAdmin="false" />
             ))
           ) : (
             <div>No Property Found</div>
