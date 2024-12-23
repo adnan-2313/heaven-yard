@@ -25,6 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
 const Home = () => {
   const settings = {
     dots: true,
@@ -84,64 +85,17 @@ const Home = () => {
             </p>
           </div>
 
-          <form
-            className="px-4 mt-8 w-4/5   md:w-2/3 text-md md:text-2xl bg-opacity-10 bg-transparent items-center rounded-xl z-20 h-12 md:h-16 shadow-lg flex 
-            justify-center backdrop-blur-3xl   border-white border outline-none "
-          >
-            <input
-              placeholder=""
-              className="w-full text-sm sm:text-md  bg-transparent border-none outline-none"
-            />
-            <button className="">
-              <Search />
-            </button>
-          </form>
-          <div className="flex w-4/5 md:w-2/3 mt-3 flex-col sm:flex-row gap-2 max-sm:px-4 bg-white  bg-opacity-10 backdrop-blur-lg rounded-xl">
-            <Select
-              className="backdrop-blur-2xl border-2 shadow-lg"
-
-              // onValueChange={(value) => setLocation(value)
-              // }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Location" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup className="backdrop-blur-2xl bg-transparent ">
-                  {State.getStatesOfCountry("IN").map(({ name }) => {
-                    return (
-                      <SelectItem key={name} value={name}>
-                        {name}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Select
-
-            // onValueChange={(value) => setLocation(value)
-            // }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Price" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {State.getStatesOfCountry("IN").map(({ name }) => {
-                    return (
-                      <SelectItem key={name} value={name}>
-                        {name}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Button className="sm:w-1/2 bg-blue-900 hover:bg-blue-950 text-white hover:text-white  backdrop-blur-2xl">
-              Clear
-            </Button>
+          <div className="flex max-sm:flex-col max-sm:px-8 w-full gap-2 sm:gap-4 justify-center sm:mt-10 max-sm:my-20  ">
+            <Link to="/property">
+              <Button className="max-sm:h-16 ] w-full sm:w-[300px]" variant="outline" size="xl">
+                Buy Property
+              </Button>
+            </Link>
+            <Link to="/property">
+              <Button className="bg-black max-sm:h-16 hover:bg-opacity-80 w-full sm:w-[300px]" variant="outline" size="xl">
+                Buy Land
+              </Button>
+            </Link>
           </div>
         </div>
       </main>

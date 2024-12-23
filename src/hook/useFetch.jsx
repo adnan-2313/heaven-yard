@@ -1,32 +1,41 @@
 import { useSession } from "@clerk/clerk-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useFetch = (cb, options = {}) => {
   const [data, setData] = useState();
-  const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const { session } = useSession();
+  const { session, isLoaded } = useSession();
 
-  console.log(session);
+  // Wait for Clerk session to load completely
+  useEffect(() => {
+    if (isLoaded && session) {
+      console.log('Session loaded');
+    }
+  }, [isLoaded, session]);
 
+  // Prevent API call if session is not loaded
   const fn = async (...args) => {
     setLoading(true);
     setError(null);
 
+    if (!isLoaded || !session) {
+      setError('Session is not loaded yet');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const supabaseAccessToken = await session.getToken({
-        template: "supabase",
-      });
-      console.log(supabaseAccessToken);
-      console.log("token", supabaseAccessToken);
+      const supabaseAccessToken = await session.getToken({ template: "supabase" });
+      console.log('Supabase Access Token:', supabaseAccessToken);
+
       const response = await cb(supabaseAccessToken, options, ...args);
-      console.log(response);
       setData(response);
       setError(null);
     } catch (error) {
       setError(error);
-      console.log(error);
+      console.log('Error:', error);
     } finally {
       setLoading(false);
     }
