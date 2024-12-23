@@ -36,17 +36,10 @@ const footerItems = [
 
 export default function FooterSection() {
   return (
-    <footer className="pt-[5%]  px-[2.5%]  dotted-background w-full mx-auto mt-20">
+    <footer className="pt-[1%]  px-[2.5%]  dotted-background w-full mx-auto mt-20">
       {/* Corporate Solutions Section */}
       <div className="max-w-[90rem] mx-auto">
-        <h1 className="text-white text-2xl text-start border-b py-2 mb-4 ">
-          Get In Touch
-        </h1>
-        <ul className="text-white text-md sm:text-xl flex gap-5 sm:gap-10 flex-wrap">
-          {corporateSolutions.map((solution, index) => (
-            <li key={index}>{solution}</li>
-          ))}
-        </ul>
+        
 
         {/* Finance and Investment Calculators Section */}
         <h1 className="text-white text-2xl text-start border-b py-2 mb-4 mt-10">
