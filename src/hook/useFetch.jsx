@@ -11,7 +11,7 @@ const useFetch = (cb, options = {}) => {
   // Wait for Clerk session to load completely
   useEffect(() => {
     if (isLoaded && session) {
-      console.log('Session loaded');
+      console.log("Session loaded");
     }
   }, [isLoaded, session]);
 
@@ -21,21 +21,21 @@ const useFetch = (cb, options = {}) => {
     setError(null);
 
     if (!isLoaded || !session) {
-      setError('Session is not loaded yet');
+      setError("Session is not loaded yet");
       setLoading(false);
       return;
     }
 
     try {
-      const supabaseAccessToken = await session.getToken({ template: "supabase" });
-      console.log('Supabase Access Token:', supabaseAccessToken);
+      const supabaseAccessToken = await session.getToken({
+        template: "supabase",
+      });
 
       const response = await cb(supabaseAccessToken, options, ...args);
       setData(response);
       setError(null);
     } catch (error) {
       setError(error);
-      console.log('Error:', error);
     } finally {
       setLoading(false);
     }

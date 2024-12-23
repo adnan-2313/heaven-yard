@@ -5,6 +5,7 @@ import AppLayout from "./layout/AppLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import Protectedroute from "./components/Protectedroute";
 import PropertyListing from "./pages/PropertyListing";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/property",
-        element: <PropertyListing />,
+        element: (
+          <ProtectedRoutes>
+            <PropertyListing />
+          </ProtectedRoutes>
+        ),
       },
     ],
   },

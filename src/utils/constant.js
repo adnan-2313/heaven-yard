@@ -1,9 +1,15 @@
 import { Home, Info, Briefcase, Mail, Settings } from "lucide-react";
 
 export const homeBanner =
-  "https://www.squareyards.com/assets/images/desktop-banner.jpeg?aio=w-1366;h-560;crop;";
+  "https://www.squareyards.com/assets/images/desktop-banner.jpeg?aio=w-1366;h-560;crop";
 
-export const navItems = ["Home", "About", "Projects", "Contacts", "Services"];
+export const navItems = [
+  { id: 1, label: "Home", link: "/home" },
+  { id: 2, label: "About", link: "/" },
+  { id: 3, label: "Projects", link: "/property" },
+  { id: 4, label: "Contacts", link: "/" },
+  { id: 5, label: "Services", link: "/" },
+];
 
 export const mobileNavItems = [
   { name: "Home", icon: Home },
@@ -12,9 +18,8 @@ export const mobileNavItems = [
   { name: "Contacts", icon: Mail },
   { name: "Services", icon: Settings },
 ];
-export const priceList = ["16000", "10999", "4199", "3399", "4199", "47000"];
-export const state = ["16000", "10999", "4199", "3399", "4199", "47000"];
-
+export const priceList = ["16000", "10999", "4199", "3399", "47000"];
+export const locality = ["Kollur", "Suraram", "Dundigal", "Financial District"];
 
 export const popularProperties = [
   {

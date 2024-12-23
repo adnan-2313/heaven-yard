@@ -1,21 +1,37 @@
 import { mobileNavItems, navItems } from "@/utils/constant";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../public/logo.png";
 
 import {
   SignedIn,
   SignedOut,
+  SignIn,
   SignInButton,
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
 import { ChevronDown, ChevronRight, MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 const Header = () => {
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [search, setSearch] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
-
+  useEffect(() => {
+    if (search.get("sign-in")) {
+      setShowSignIn(true);
+    }
+  }, [search]);
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setShowSignIn(false);
+    }
+  };
+  const handleMobileClick = () => {
+    setIsOpen(false);
+    setShowSignIn(true);
+  };
   return (
     <>
       <div className="flex justify-center w-full">
@@ -31,10 +47,11 @@ const Header = () => {
                     key={index}
                     className="flex items-center font-semibold  text-[#050c2b] gap-1 hover:text-[#536574] border-black hover:transition-all transition-all cursor-pointer "
                   >
-                    {item}
-                    {(item === "Projects" || item === "Services") && (
-                      <ChevronDown />
-                    )}
+                    <NavLink className="flex" to={item.link}>
+                      {item.label}
+                      {(item.label === "Projects" ||
+                        item.label === "Services") }
+                    </NavLink>
                   </li>
                 );
               })}
@@ -49,14 +66,13 @@ const Header = () => {
 
               <div className="z-10 hidden  lg:flex max-xs:left-48">
                 <SignedOut>
-                  <SignInButton>
-                    <Button
-                      className="px-4 py-1 text-sm rounded-sm backdrop-blur-xl text-white
+                  <Button
+                    onClick={() => setShowSignIn(true)}
+                    className="px-4 py-1 text-sm rounded-sm backdrop-blur-xl text-white
                      bg-gray-900 hover:bg-gray-900  bg-opacity-20 hover:bg-opacity-30"
-                    >
-                      Login
-                    </Button>
-                  </SignInButton>
+                  >
+                    Login
+                  </Button>
                 </SignedOut>
                 <SignedIn>
                   <UserButton />
@@ -92,14 +108,13 @@ const Header = () => {
             {user ? "Account" : "Login in to Your Account"}
             <div className="z-10 flex max-xs:left-48">
               <SignedOut>
-                <SignInButton>
-                  <Button
-                    className="px-4 py-1 text-sm rounded-sm text-white
+                <Button
+                  onClick={handleMobileClick}
+                  className="px-4 py-1 text-sm rounded-sm text-white
                      bg-blue-950 hover:bg-blue-900  "
-                  >
-                    Login
-                  </Button>
-                </SignInButton>
+                >
+                  Login
+                </Button>
               </SignedOut>
               <SignedIn>
                 <UserButton />
@@ -133,6 +148,14 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+      {showSignIn && (
+        <div
+          className="fixed inset-0 flex z-[100] items-center justify-center bg-black bg-opacity-50"
+          onClick={handleOverlayClick}
+        >
+          <SignIn signUpForceRedirectUrl="/" fallbackRedirectUrl="/"></SignIn>
+        </div>
+      )}
     </>
   );
 };
