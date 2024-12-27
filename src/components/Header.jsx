@@ -6,11 +6,10 @@ import {
   SignedIn,
   SignedOut,
   SignIn,
-  SignInButton,
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
-import { ChevronDown, ChevronRight, MenuIcon, X } from "lucide-react";
+import { ChevronRight, MenuIcon, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link, NavLink, useSearchParams } from "react-router-dom";
 const Header = () => {
@@ -136,16 +135,20 @@ const Header = () => {
             )}
           </li>
           {mobileNavItems.map((item, index) => (
-            <li
-              className="text-black flex justify-between hover:text-blue-900 transition-all text-md border-b py-2 font-medium cursor-pointer"
+            <NavLink
+              className=""
+              to={item.link}
               key={index}
+              onClick={() => setIsOpen(false)}
             >
-              <span className="flex gap-4 items-center">
-                {" "}
-                <item.icon size={20} color="#172554" /> {item.name}
-              </span>
-              <ChevronRight />
-            </li>
+              <li className="text-black flex justify-between hover:text-blue-900 transition-all text-md border-b py-2 font-medium cursor-pointer">
+                <span className="flex gap-4 items-center">
+                  {" "}
+                  <item.icon size={20} color="#172554" /> {item.name}
+                </span>
+                <ChevronRight />
+              </li>
+            </NavLink>
           ))}
         </ul>
       </nav>

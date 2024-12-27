@@ -12,11 +12,11 @@ export const navItems = [
 ];
 
 export const mobileNavItems = [
-  { name: "Home", icon: Home },
-  { name: "About Us", icon: Info },
-  { name: "Projects", icon: Briefcase },
-  { name: "Contacts", icon: Mail },
-  { name: "Services", icon: Settings },
+  { name: "Home", icon: Home, link: "/" },
+  { name: "About Us", icon: Info, link: "/" },
+  { name: "Projects", icon: Briefcase, link: "/property" },
+  { name: "Contacts", icon: Mail, link: "/" },
+  { name: "Services", icon: Settings, link: "/" },
 ];
 export const priceList = ["16000", "10999", "4199", "3399", "47000"];
 export const locality = ["Kollur", "Suraram", "Dundigal", "Financial District"];

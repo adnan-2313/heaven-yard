@@ -70,7 +70,7 @@ const Home = () => {
           <img
             src={homeBanner}
             alt=""
-            className="-z-10 w-full  mx-auto h-[700px] border-b-2  md:h-[550px] absolute object-cover shadow-gray-400"
+            className="-z-10 w-full  mx-auto h-[700px] border-b-2  md:h-[600px] absolute object-cover shadow-gray-400"
           />
         </div>
         <div className=" flex flex-col mt-28 items-center  justify-center  max-w-6xl mx-auto">
@@ -99,7 +99,7 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <section className="mt-52 max-w-[90rem] mx-auto overflow-hidden  px-4  sm:mt-36 flex flex-col justify-center text-center">
+      <section className="mt-52 max-w-[90rem] mx-auto overflow-hidden  px-4  sm:mt-40 flex flex-col justify-center text-center">
         <div className="">
           <h1 className="text-4xl  gradient-title1 w-full sm:leading-[4rem]    font-extrabold text-blue-950 ">
             Our Popular Properties{" "}
