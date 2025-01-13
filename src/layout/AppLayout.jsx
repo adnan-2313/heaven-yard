@@ -21,6 +21,7 @@ const AppLayout = () => {
       <Header />
       <Outlet />
       <FooterSection />
+      
     </>
   );
 };
